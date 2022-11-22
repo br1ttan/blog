@@ -1,0 +1,12 @@
+<div class="sidebar">
+    <div class="sidebar-content">
+        <a 
+        *ngFor="let item of sidebarItemArray"  
+        class="sidebar-item"
+        (click)="routeToSelectedRouteName(item.routeName)"
+        >
+            <i class="material-icons"> {{ item.iconName }} </i>
+            <p> {{ item.itemName }} </p>
+        </a>
+    </div>
+</div>

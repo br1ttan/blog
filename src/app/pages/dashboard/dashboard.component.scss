@@ -1,0 +1,10 @@
+:host {
+    .posts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(auto, 1fr);
+        flex-wrap: wrap;
+        column-gap: 60px;
+        row-gap: 120px;
+    }
+}

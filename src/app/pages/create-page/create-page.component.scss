@@ -1,0 +1,21 @@
+:host {
+    margin: 0 auto;
+
+    form {
+        max-width: 660px;
+        border: 1px solid black;
+        padding: 15px;
+        column-gap: 20px;
+    }
+    os-button {
+        margin-top: 20px;
+    }
+    
+    .author {
+        margin-left: 20px;
+    }
+    
+    .title {
+        margin-left: 20px;
+    }
+}

@@ -1,0 +1,19 @@
+:host {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    
+    os-title-bar {
+        min-height: 64px;
+        padding: 8px;
+        align-items: center;
+    
+        os-text {
+            font-size: 24px;
+        }
+        os-dropdown {
+            width: 100px;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<div
+class="posts"
+*ngIf="data$ | async as posts; else loading">
+    <card 
+    *ngFor="let post of posts" 
+    [data]="post"
+    [subPage]="subPage"
+    >
+    </card>
+</div>
+
+<ng-template #loading>
+    <app-loader>
+    </app-loader>
+</ng-template>

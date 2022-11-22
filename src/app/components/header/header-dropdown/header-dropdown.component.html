@@ -1,0 +1,18 @@
+<div class="os-dropdown-menu">
+    <os-button
+    (click)="toggleListMenu()">
+        Створити
+    </os-button>
+    <os-list *ngIf="isListActivated">
+        <a>
+            <os-list-item (osClick)="toggleListMenu()" routerLink="create">
+                <os-text>Статья</os-text>
+            </os-list-item>
+        </a>
+        <a>
+            <os-list-item>
+                <os-text>Тема</os-text>
+            </os-list-item>
+        </a>
+    </os-list>
+</div>

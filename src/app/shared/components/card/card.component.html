@@ -1,0 +1,20 @@
+<div class="card">
+    <a (click)="navigateToDetailPage(data, subPage)">
+        <img class="main-img" [src]="data.image" alt="">
+    </a>
+    <div class="author">
+        <a href="#">
+            <img class="author-img" [src]="data.image" alt="">
+        </a>
+        <p>
+            {{ data.author }}
+        </p>
+    </div>
+    <div class="content">
+        <a (click)="navigateToDetailPage(data, subPage)">
+            <b class="bold-text">
+                {{ data.title }}
+            </b>
+        </a>
+    </div>
+</div>

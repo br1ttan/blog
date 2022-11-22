@@ -1,0 +1,18 @@
+:host {
+    margin-left: auto;
+    
+    .os-dropdown-menu {
+        position: relative;
+        
+        os-text {
+            color: #000;
+            font-size: 16px;
+            margin: 0 auto;
+        }
+    
+        os-list {
+            position: fixed;
+            width: 100px;
+        }
+    }
+}
