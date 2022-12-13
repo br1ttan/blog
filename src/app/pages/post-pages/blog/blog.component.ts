@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { IPost, PostEnum } from '@core';
-import { PostService } from '@services';
+import { PostEnum } from '@core';
+import { IPost, PostService } from '@features/post';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,10 +14,10 @@ export class BlogComponent implements OnInit {
   public subPage = PostEnum.Blog;
 
   constructor(
-    private postService: PostService
+    private readonly postService: PostService
   ) { }
 
   public ngOnInit(): void {
-    this.data$ = this.postService.getDifferentPosts(PostEnum.Blog);
+    this.data$ = this.postService.getByType(PostEnum.Blog);
   }
 }

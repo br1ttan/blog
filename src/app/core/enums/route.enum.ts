@@ -4,5 +4,6 @@ export enum RouteEnum {
     Blog = 'blog',
     Reviews = 'reviews',
     Details = 'details',
-    Create = 'create'
+    Create = 'create',
+    Search = 'search'
 }

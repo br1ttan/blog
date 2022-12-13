@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IPost } from '@core';
-import { PostService } from '@services';
+import { IPost, PostService } from '@features/post';
 import { Subject, takeUntil } from 'rxjs';
 import { localPost, POST_ARRAY } from './post.array';
 
@@ -11,7 +10,9 @@ import { localPost, POST_ARRAY } from './post.array';
   styleUrls: ['./create-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreatePageComponent implements OnInit, OnDestroy {
+export class CreatePageComponent implements OnInit
+ , OnDestroy 
+{
   
   private destroy$ = new Subject();
   private fileInput!: string | ArrayBuffer | null;
@@ -20,7 +21,7 @@ export class CreatePageComponent implements OnInit, OnDestroy {
   public selectedItem: localPost = this.items[1];
 
   constructor(
-    private postService: PostService
+    private readonly postService: PostService
   ) {}
   
   public ngOnInit(): void {
@@ -48,7 +49,7 @@ export class CreatePageComponent implements OnInit, OnDestroy {
       image: this.fileInput,
     }
 
-    this.postService.sendPost(post, this.selectedItem.post)
+    this.postService.send(post, this.selectedItem.post)
       .pipe(
         takeUntil(this.destroy$)
       )

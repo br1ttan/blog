@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IPost, PostEnum } from '@core';
-import { PostService } from '@services';
+import { PostEnum } from '@core';
+import { IPost, PostService } from '@features/post';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,15 +10,14 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
-
   public data$!: Observable<IPost[]>;
   public subPage = PostEnum.Blog;
 
   constructor(
-    private postService: PostService
+    private readonly postService: PostService
   ) { }
 
   public ngOnInit(): void {
-    this.data$ = this.postService.getDifferentPosts(PostEnum.Blog);
+    this.data$ = this.postService.getByType(PostEnum.Blog);
   }
 }

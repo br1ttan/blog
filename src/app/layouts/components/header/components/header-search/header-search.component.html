@@ -1,0 +1,8 @@
+<os-form-field>
+<os-text-box
+    [(ngModel)]="value"
+    #textBox
+    [placeholder]="'Введіть пошуковий запит'"
+    (osKeyUp)="onEnterKeyUp($event)">
+</os-text-box>
+</os-form-field>

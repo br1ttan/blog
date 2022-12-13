@@ -5,10 +5,12 @@ import { CreatePageRouting } from './create-page.routing';
 import { QuillModule } from 'ngx-quill';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared';
+import { AuthorInputComponent } from './components/author-input';
 
 @NgModule({
   declarations: [
-    CreatePageComponent
+    CreatePageComponent,
+    AuthorInputComponent
   ],
   imports: [
     QuillModule.forRoot(),

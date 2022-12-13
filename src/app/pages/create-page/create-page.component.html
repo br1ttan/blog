@@ -1,29 +1,30 @@
 <form
-*ngIf="items"
 [formGroup]="form"
+*ngIf="items"
 >
 
-    <h1>Створення нового поста</h1>
+<h1>Створення нового поста</h1>
 
-    <div 
-    [ngClass]="{invalid: form.get('title')?.touched && 
-    form.get('title')?.invalid }"
-    class="form-control"
+<div 
+[ngClass]="{invalid: form.get('title')?.touched && 
+form.get('title')?.invalid }"
+class="form-control"
+>
+    <label for="title">Назва поста:</label>
+    <input class="title" type="text" formControlName="title">
+    <div
+    *ngIf="form.get('title')?.touched && 
+    form.get('title')?.invalid"
+    class="validation"
     >
-        <label for="title">Назва поста:</label>
-        <input class="title" type="text" formControlName="title">
-        <div
-        *ngIf="form.get('title')?.touched && 
-        form.get('title')?.invalid"
-        class="validation"
-        >
-            <small
-            *ngIf="form.get('title')?.errors?.['required']"
-            >Потрібно ввести назву посту
-            </small>
-        </div>
+        <small
+        *ngIf="form.get('title')?.errors?.['required']"
+        >Потрібно ввести назву посту
+        </small>
     </div>
-    
+</div>
+
+
     <os-list>
         <os-list-item
             *ngFor="let item of items"
@@ -34,45 +35,53 @@
     </os-list>
     
     <div
-    class="form-control"
+class="form-control"
+>
+    <label for="image">Вибрати зображення: </label>
+    <input
+    (change)="getImageFromFileReader(fileInput, $event)"
+    class="file-input"
+    #fileInput
+    formControlName="image"
+    type="file" 
+    accept=".jpg,.jpeg,.gif,.bmp,.png"
     >
-        <label for="image">Вибрати зображення: </label>
-        <input
-        (change)="getImageFromFileReader(fileInput, $event)"
-        class="file-input"
-        #fileInput
-        formControlName="image"
-        type="file" 
-        accept=".jpg,.jpeg,.gif,.bmp,.png"
-        >
-    </div>
+</div>
 
+    
     <div class="form-control">
         <label>Контент поста</label>
         <quill-editor formControlName="text"></quill-editor>
     </div>
-
+    
+    
     <div
-    [ngClass]="{invalid: form.get('author')?.touched && form.get('author')?.invalid }"
+    [ngClass]="{invalid: 
+        form.get('author')?.touched && 
+        form.get('author')?.invalid }"
     class="form-control"
     >
         <label for="author">Автор поста:</label>
-        <input class="author" type="text" formControlName="author">
+        
+        <input
+        formControlName="author"
+        class="author">
+        
         <div 
         *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
-        class="validation"
-        >
+        class="validation">
             <small 
             *ngIf="form.get('author')?.errors?.['required']"
             >Потрібно ввести автора посту
             </small>
-        </div>
+        </div> -->
     </div>
-
+    
+    <label *ngIf="form.get('author')?.touched">label has been show</label>
     <os-button
-    (osClick)="onSubmitButtonClick()"
-    [isDisabled]="form.invalid"
-    >
+        (osClick)="onSubmitButtonClick()"
+        [isDisabled]="form.invalid"
+        >
         Створити пост
     </os-button>
 </form>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DigestComponent } from './digest.component';
 import { DigestRoutingModule } from './digest.routing';
 import { SharedModule } from '@shared';
+import { FeaturesModule } from '@features';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { SharedModule } from '@shared';
   imports: [
     DigestRoutingModule,
     SharedModule,
-    CommonModule
+    CommonModule,
+    FeaturesModule
   ]
 })
 export class DigestModule { }

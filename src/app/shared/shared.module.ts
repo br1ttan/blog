@@ -3,16 +3,17 @@ import { CommonModule } from '@angular/common';
 import { NgxOsModule } from 'ngx-os';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { CardComponent } from './components/card';
-import { LoaderComponent } from './components/loader/loader.component';
+import { CardComponent, GridItemComponent, LoaderComponent } from './components';
 
 @NgModule({
   declarations: [
     CardComponent,
-    LoaderComponent
+    LoaderComponent,
+    GridItemComponent
   ],
   exports: [
     NgxOsModule,
+    GridItemComponent,
     CommonModule,
     RouterModule,
     HttpClientModule,

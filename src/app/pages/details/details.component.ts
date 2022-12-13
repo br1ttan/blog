@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { IPost, PostType } from '@core';
-import { PostService } from '@services';
+import { IPost, PostService, PostType } from '@features/post';
 import { Observable, switchMap } from 'rxjs';
 
 @Component({
@@ -17,7 +16,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly postService: PostService,
-    private readonly cdr: ChangeDetectorRef
+    private readonly changeDetector: ChangeDetectorRef
   ) { }
 
   public ngOnInit(): void {
@@ -26,9 +25,11 @@ export class DetailsComponent implements OnInit {
   
   private getPostData(): void {
     let firstParam = this.activatedRoute.snapshot.parent?.url[0].path as PostType;
+    
     this.post$ = this.activatedRoute.params
-    .pipe(switchMap((params: Params) => {
-      return this.postService.getPostById(firstParam, params['id']);
+    .pipe(
+      switchMap((params) => {
+        return this.postService.getByTypeAndId(firstParam, params['id']);
     }))
   }
 }

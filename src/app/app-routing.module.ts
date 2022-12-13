@@ -52,6 +52,11 @@ const routes: Routes = [
         path: RouteEnum.Create,
         loadChildren: () => import('./pages/create-page/create-page.module')
           .then(m => m.CreatePageModule)
+      },
+      {
+        path: `${RouteEnum.Search}/:query`,
+        loadChildren: () => import('./pages/response-page/response.module')
+          .then(m => m.ResponseModule)
       }
     ]
   }

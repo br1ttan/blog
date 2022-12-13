@@ -1,0 +1,16 @@
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-file-input',
+  templateUrl: './file-input.component.html',
+  styleUrls: ['./file-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class FileInputComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

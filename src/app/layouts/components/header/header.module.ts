@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
 import { SharedModule } from '@shared';
-import { HeaderDropdownComponent } from '@components';
-import { HeaderSearchComponent } from 'src/app/components/header/header-search/header-search.component';
+import { HeaderDropdownComponent, HeaderSearchComponent } from './components';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,6 +13,7 @@ import { HeaderSearchComponent } from 'src/app/components/header/header-search/h
   ],
   imports: [
     SharedModule,
+    FormsModule,
     CommonModule
   ],
   exports: [

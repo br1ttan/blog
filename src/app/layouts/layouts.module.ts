@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HeaderModule, SidebarComponent } from './components';
 import { MainLayoutComponent } from './main';
 import { SharedModule } from '@shared';
+import { FeaturesModule } from '@features';
 
 @NgModule({
   declarations: [
@@ -9,6 +10,7 @@ import { SharedModule } from '@shared';
     SidebarComponent
   ],
   imports: [
+    FeaturesModule,
     HeaderModule,
     SharedModule
   ]

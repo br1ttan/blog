@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IPost, PostEnum, RouteEnum } from '@core';
+import { PostEnum, RouteEnum } from '@core';
+import { IPost } from '@features/post';
 
 @Component({
   selector: 'card [data][subPage]',
@@ -8,7 +9,7 @@ import { IPost, PostEnum, RouteEnum } from '@core';
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   @Input()
   public data!: IPost;
 
@@ -18,7 +19,11 @@ export class CardComponent {
   constructor(
     private readonly router: Router
   ) {}
-
+  
+  public ngOnInit(): void {
+    console.log(this.data)
+  }
+    
   public navigateToDetailPage(post: IPost, subPage: PostEnum): void {
     this.router.navigateByUrl(`${subPage}/${RouteEnum.Details}/${post.id}`);
   }
