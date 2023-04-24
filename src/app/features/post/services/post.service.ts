@@ -11,8 +11,8 @@ export class PostService {
         private readonly postApi: PostApi
     ) { }
     
-    public send(post: IPost, postType: PostType): Observable<IPost> {
-        return this.postApi.send(post, postType)
+    public send(post: IPost): Observable<IPost> {
+        return this.postApi.send(post)
             .pipe(
                 map((response: any) => {
                     return {
@@ -20,13 +20,14 @@ export class PostService {
                         id: response.name,
                         date: new Date(post.date),
                     }
-                }));
+                })
+            );
     }
 
     public getByType(postType: PostType): Observable<IPost[]> {
         return this.postApi.getByType(postType)
             .pipe(
-                filter(response => response !== null),
+                filter((response) => response !== null),
                 map((response: { [key: string]: any }) => {
                     return Object
                         .keys(response)
@@ -35,7 +36,8 @@ export class PostService {
                             id: key,
                             date: new Date(response[key].date)
                         }))
-            }));
+                    })
+            );
     }
 
     public getByTypeAndId(postType: PostType, id: string | number): Observable<IPost> {

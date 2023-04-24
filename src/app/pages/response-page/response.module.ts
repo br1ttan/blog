@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ResponseComponent } from './response.component';
 import { ResponseRouting } from './response.routing';
 import { SharedModule } from '@shared';
-import { FeaturesModule } from '@features';
 
 @NgModule({
   declarations: [
@@ -11,7 +10,6 @@ import { FeaturesModule } from '@features';
   ],
   imports: [
     CommonModule,
-    FeaturesModule,
     SharedModule,
     ResponseRouting
   ]

@@ -1,21 +1,22 @@
 import { PostEnum } from "@core";
+import { PostType } from "@features/post";
 
-export interface localPost {
-    post: PostEnum,
-    postName: string
+export interface localPosts {
+    readonly post: PostType,
+    readonly postName: string
 }
 
-export const POST_ARRAY: localPost[] = [
+export const POST_ARRAY: localPosts[] = [
     {
-        post: PostEnum.Digest,
+        post: 'digest',
         postName: 'Новини'
     },
     {
-        post: PostEnum.Review,
+        post: 'review',
         postName: 'Обзори'
     },
     {
-        post: PostEnum.Blog,
+        post: 'blog',
         postName: 'Блог'
     },
 ]

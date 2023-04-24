@@ -25,10 +25,10 @@ import { SharedModule } from './shared';
   ],
   providers: [
     {
-        provide: NGX_BASE_STATE_DEVTOOLS_CONFIG,
-        useValue: new NgxBaseStateDevtoolsConfig({
-            isEnabled: !environment.production // Devtools will not work in production
-        })
+      provide: NGX_BASE_STATE_DEVTOOLS_CONFIG,
+      useValue: new NgxBaseStateDevtoolsConfig({
+        isEnabled: !environment.production
+      })
     }
 ],
   bootstrap: [AppComponent]

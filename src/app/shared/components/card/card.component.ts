@@ -1,30 +1,23 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { PostEnum, RouteEnum } from '@core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import { PostEnum } from '@core';
 import { IPost } from '@features/post';
 
 @Component({
-  selector: 'card [data][subPage]',
+  selector: 'card [data]',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardComponent implements OnInit {
-  @Input()
+export class CardComponent {
+  @Input() 
   public data!: IPost;
-
-  @Input()
-  public subPage!: PostEnum;
   
-  constructor(
-    private readonly router: Router
-  ) {}
-  
-  public ngOnInit(): void {
-    console.log(this.data)
-  }
-    
-  public navigateToDetailPage(post: IPost, subPage: PostEnum): void {
-    this.router.navigateByUrl(`${subPage}/${RouteEnum.Details}/${post.id}`);
-  }
+  @Output() 
+  public clickEmitter = new EventEmitter<Event>();
 }

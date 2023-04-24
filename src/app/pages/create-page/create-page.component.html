@@ -1,87 +1,74 @@
-<form
-[formGroup]="form"
-*ngIf="items"
->
+<form *ngIf="items" [formGroup]="form">
+    <h2>Створення нового поста</h2>
 
-<h1>Створення нового поста</h1>
-
-<div 
-[ngClass]="{invalid: form.get('title')?.touched && 
-form.get('title')?.invalid }"
-class="form-control"
->
-    <label for="title">Назва поста:</label>
-    <input class="title" type="text" formControlName="title">
-    <div
-    *ngIf="form.get('title')?.touched && 
-    form.get('title')?.invalid"
-    class="validation"
-    >
-        <small
-        *ngIf="form.get('title')?.errors?.['required']"
-        >Потрібно ввести назву посту
-        </small>
-    </div>
-</div>
-
-
-    <os-list>
-        <os-list-item
-            *ngFor="let item of items"
-            [isSelected]="item === selectedItem"
-            (osSelected)="onItemSelected(item)">
-            <os-text>{{ item.postName }}</os-text>
-        </os-list-item>
-    </os-list>
-    
-    <div
-class="form-control"
->
-    <label for="image">Вибрати зображення: </label>
-    <input
-    (change)="getImageFromFileReader(fileInput, $event)"
-    class="file-input"
-    #fileInput
-    formControlName="image"
-    type="file" 
-    accept=".jpg,.jpeg,.gif,.bmp,.png"
-    >
-</div>
-
-    
-    <div class="form-control">
-        <label>Контент поста</label>
-        <quill-editor formControlName="text"></quill-editor>
-    </div>
-    
-    
-    <div
-    [ngClass]="{invalid: 
-        form.get('author')?.touched && 
-        form.get('author')?.invalid }"
-    class="form-control"
-    >
-        <label for="author">Автор поста:</label>
+    <div 
+        [ngClass]="{invalid: form.get('title')?.touched && 
+        form.get('title')?.invalid }"
+        class="form-control">
         
-        <input
-        formControlName="author"
-        class="author">
+        <label for="title">Назва поста:</label>
         
-        <div 
-        *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
-        class="validation">
-            <small 
-            *ngIf="form.get('author')?.errors?.['required']"
-            >Потрібно ввести автора посту
+        <input class="title" type="text" formControlName="title">
+        
+        <div
+            *ngIf="form.get('title')?.touched && 
+            form.get('title')?.invalid"
+            class="validation">
+
+            <small *ngIf="form.get('title')?.errors?.['required']">
+                Потрібно ввести назву посту
             </small>
-        </div> -->
+        </div>
     </div>
-    
-    <label *ngIf="form.get('author')?.touched">label has been show</label>
-    <os-button
-        (osClick)="onSubmitButtonClick()"
-        [isDisabled]="form.invalid"
-        >
-        Створити пост
-    </os-button>
+
+        <os-list>
+            <os-list-item
+                *ngFor="let item of items"
+                (osSelected)="onItemSelected(item)"
+                [isSelected]="item === selectedItem">
+                <os-text>{{ item.postName }}</os-text>
+            </os-list-item>
+        </os-list>
+        
+        <div class="form-control">
+        <label for="image">Вибрати зображення: </label>
+        <input
+            (change)="getImageFromFileReader($event)"
+            class="file-input"
+            #fileInput
+            formControlName="image"
+            type="file" 
+            accept=".jpg,.jpeg,.gif,.bmp,.png">
+        </div>
+        
+        <div class="form-control">
+            <label>Контент поста</label>
+            <quill-editor formControlName="text"></quill-editor>
+        </div>
+        
+        
+        <div
+            [ngClass]="{invalid: 
+            form.get('author')?.touched && 
+            form.get('author')?.invalid }"
+            class="form-control">
+            <label for="author">Автор поста:</label>
+            
+            <input formControlName="author" class="author">
+            
+            <div 
+                *ngIf="form.get('author')?.touched && form.get('author')?.invalid"
+                class="validation">
+                <small *ngIf="form.get('author')?.errors?.['required']">
+                    Потрібно ввести автора посту
+                </small>
+            </div>
+        </div>
+        
+        <label *ngIf="form.get('author')?.touched">Label has been showed</label>
+        <os-button
+            (osClick)="onSubmitButtonClick()"
+            [isDisabled]="form.invalid">
+            Створити пост
+        </os-button>
 </form>

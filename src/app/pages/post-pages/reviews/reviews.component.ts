@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { PostEnum } from '@core';
+import { Router } from '@angular/router';
+import { PostEnum, RouteEnum } from '@core';
 import { IPost, PostService } from '@features/post';
 import { Observable } from 'rxjs';
 
@@ -9,15 +10,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./reviews.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReviewsComponent implements OnInit {
-  public data$!: Observable<IPost[]>;
-  public subPage = PostEnum.Review;
+export class ReviewsComponent {
+  public data$ = this.postService.getByType(PostEnum.Review);
 
   constructor(
-    private readonly postService: PostService
+    private readonly postService: PostService,
+    private readonly router: Router
   ) { }
 
-  public ngOnInit(): void {
-    this.data$ = this.postService.getByType(PostEnum.Review);
+  public handleNavigate(data: IPost): void {
+    this.router.navigateByUrl(`${data.post}/${RouteEnum.Details}/${data.id}`);
   }
 }

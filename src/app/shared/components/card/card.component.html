@@ -1,17 +1,17 @@
 <div class="card">
-    <a (click)="navigateToDetailPage(data, subPage)">
-        <img class="main-img" [src]="data.image" alt="">
+    <a (click)="clickEmitter.emit()">
+        <img class="main-img" [src]="data.image" alt="image">
     </a>
     <div class="author">
         <a href="#">
-            <img class="author-img" [src]="data.image" alt="">
+            <img class="author-img" [src]="data.image" alt="author">
         </a>
         <p>
             {{ data.author }}
         </p>
     </div>
     <div class="content">
-        <a (click)="navigateToDetailPage(data, subPage)">
+        <a (click)="clickEmitter.emit()">
             <b class="bold-text">
                 {{ data.title }}
             </b>

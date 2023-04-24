@@ -1,4 +1,4 @@
-<div *ngIf="post$ | async as post; else loading" class="details">
+<div *ngIf="post$ | async as post; else loadingTemplate" class="details">
     <div class="post-page__header">
         <h1 class="post-title">
             {{ post.title }}
@@ -24,7 +24,6 @@
     </div>
 </div>
 
-<ng-template #loading>
-    <app-loader>
-    </app-loader>
+<ng-template #loadingTemplate>
+    <app-loader></app-loader>
 </ng-template>

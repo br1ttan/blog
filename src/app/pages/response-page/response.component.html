@@ -1,15 +1,11 @@
-<ng-container *ngIf="posts | async as post; else loading">
-    <ng-container *ngIf="post; else emptyDataTemplate ">
-        <response-card [data]="post">
-        </response-card>
-    </ng-container>
+<ng-container *ngIf="posts.length > 0; else emptyTemplate">
+    <card 
+        *ngFor="let post of posts"
+        (clickEmitter)="handleNavigate(post)" 
+        [data]="post">
+    </card>
 </ng-container>
 
-<ng-template #loading>
-    <app-loader>
-    </app-loader>
-</ng-template>
-
-<ng-template #emptyDataTemplate>
-    <h2>no results...</h2>
+<ng-template #emptyTemplate>
+    <h2>There is no data</h2>
 </ng-template>

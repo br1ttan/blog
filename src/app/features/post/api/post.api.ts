@@ -14,8 +14,8 @@ export class PostApi {
         private readonly http: HttpClient
     ) { }
 
-    public send(post: IPost, postType: PostType): Observable<IPost> {
-        return this.http.post<IPost>(`${this.dataBase}/${postType}.json`, post);
+    public send(post: IPost): Observable<IPost> {
+        return this.http.post<IPost>(`${this.dataBase}/${post.post}.json`, post);
     }
 
     public getByType(postType: PostType): Observable<IPost> {

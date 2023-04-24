@@ -5,7 +5,8 @@ export interface IPost {
     text: string,
     author: string,
     date: Date | string,
-    selectedPost: unknown
+    selectedPost: unknown,
+    post: PostType
 }
 
 export type PostType = 'blog' | 'review' | 'digest';

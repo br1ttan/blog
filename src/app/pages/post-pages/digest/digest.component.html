@@ -1,17 +1,19 @@
-<div 
-class="posts" 
-*ngIf="data$ | async as posts; 
-else loading">
-    <post-grid-item>
-        <card 
-        *ngFor="let post of posts" 
-        [data]="post" 
-        [subPage]="subPage">
+<ng-container 
+    *ngIf="data$ | async as posts; 
+    else loadingTemplate" class="posts">
+    <ng-container *ngIf="posts.length > 0; else emptyDataTemplate">
+        <card
+            *ngFor="let post of posts"
+            (clickEmitter)="handleNavigate(post)"
+            [data]="post">
         </card>
-    </post-grid-item>
-</div>
+    </ng-container>
+</ng-container>
 
-<ng-template #loading>
-    <app-loader>
-    </app-loader>
+<ng-template #loadingTemplate>
+    <app-loader></app-loader>
+</ng-template>
+
+<ng-template #emptyDataTemplate>
+    <h2>There is no data</h2>
 </ng-template>
